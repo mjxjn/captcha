@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>geeguard SDK</title>
+    <style>
+        body{ text-align: center;font-size:18px; height: 2000px;}
+        #qiangPiao{display: inline-block;  background-color: orange;  color: #fff;  font-size: 20px;  padding:5px 10px;  }
+    </style>
+</head>
+<body>
+<br>
+<h2>发送事件信息</h2>
+<p>任何关键事件比如抢票，抢优惠券,登录等关键事件发生时可按照以下示例发送事件信息。</p>
+<p>抢票事件为您的业务逻辑，此处只是以此举例</p>
+<button id="qiangPiao">抢票</button>
+
+<!--jquery的引入只是为了方便发送ajax请求-->
+<script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- 如果您使用的是http协议，此处改为http://geeguard.geetest.com/getfullpage.php?gt_id=xxxxxxxxxxxxx-->
+<script src="http://apiguard.geetest.com/getfullpage.php?gt_id=b46d1900d0a894591916ea94ea91bd2c"></script>
+<script>
+    //关键事件发生时通知后端，并发送事件信息，此为您的业务逻辑
+    document.querySelector('#qiangPiao').onclick = function () {
+
+        //Geeguard.getData()取到本次事件的行为数据，在发生关键事件时，发送给网站主的业务接口，再由业务接口转发给geeguard后台
+        var geeguardData = Geeguard.getData()
+        $.post('post_event.php', {
+            selfData: 'selfData',  //网站主自身业务数据
+            geeguardData: geeguardData   //geeguard数据，发送给业务接口，由业务接口转发给geeguard后台
+        });
+    }
+</script>
+</body>
+</html>

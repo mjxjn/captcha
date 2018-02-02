@@ -1,0 +1,22 @@
+{
+    "name": "saga/captcha",
+    "type": "library",
+    "description": "极验3.0、图像验证",
+    "keywords": ["极验3.0", "验证码", "thinkphp验证码"],
+    "homepage": "https://github.com/mjxjn/captcha",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "saga",
+            "email": "22743285@qq.com",
+            "homepage": "https://github.com/mjxjn"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": {"saga\\saga-captcha\\": "src/"}
+    },
+    "version": "1.0.0"
+}
